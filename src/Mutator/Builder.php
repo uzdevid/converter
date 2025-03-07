@@ -12,7 +12,7 @@ use UzDevid\Converter\Exception\NonExistClassException;
 use UzDevid\Converter\StaticArgument;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class BuilderMutator extends Mutator {
+final class Builder extends Mutator {
     private string $builderClass;
 
     /**

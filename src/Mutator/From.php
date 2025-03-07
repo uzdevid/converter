@@ -6,7 +6,7 @@ namespace UzDevid\Converter\Mutator;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class FromNameMutator extends Mutator {
+final class From extends Mutator {
     /**
      * @param string $name
      * @param string ...$property

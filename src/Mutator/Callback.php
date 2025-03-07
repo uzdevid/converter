@@ -6,7 +6,7 @@ namespace UzDevid\Converter\Mutator;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_PROPERTY)]
-final class CallbackMutator extends Mutator {
+final class Callback extends Mutator {
     /**
      * @param array $callback
      * @param string ...$properties
