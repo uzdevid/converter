@@ -29,4 +29,12 @@ readonly final class InputData implements ArrayableInterface {
     public function getValue(string $propertyName): mixed {
         return is_array($this->data) ? $this->data[$propertyName] : $this->data->{$propertyName};
     }
+
+    /**
+     * @param string $propertyName
+     * @return bool
+     */
+    public function hasProperty(string $propertyName): bool {
+        return is_array($this->data) ? isset($this->data[$propertyName]) : isset($this->data->{$propertyName});
+    }
 }

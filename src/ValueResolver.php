@@ -19,11 +19,13 @@ class ValueResolver {
      * @throws ReflectionException
      */
     public static function resolve(ReflectionProperty $property, InputData $inputData, Converter $converter): mixed {
-        $type = $property->getType();
-
         $attributes = $property->getAttributes(Mutator::class, ReflectionAttribute::IS_INSTANCEOF);
 
-        $value = $inputData->getValue($property->getName());
+        $value = null;
+
+        if ($inputData->hasProperty($property->getName())) {
+            $value = $inputData->getValue($property->getName());
+        }
 
         foreach ($attributes as $attribute) {
             /** @var Mutator $attributeInstance */
@@ -31,6 +33,8 @@ class ValueResolver {
 
             $value = $attributeInstance->setInputData($inputData)->handle();
         }
+
+        $type = $property->getType();
 
         if ($type instanceof ReflectionNamedType && $type->isBuiltin() === false) {
             $typeName = $type->getName();

@@ -3,7 +3,12 @@ declare(strict_types=1);
 
 namespace UzDevid\Converter\Tests\Support\Model;
 
-class Category {
+use UzDevid\Converter\ConvertableInterface;
+use UzDevid\Converter\Trait\Converter;
+
+class Category implements ConvertableInterface {
+    use Converter;
+    
     /**
      * @param int $id
      * @param string $title
